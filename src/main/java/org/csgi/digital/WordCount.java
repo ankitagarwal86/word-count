@@ -35,12 +35,13 @@ public class WordCount {
 
         try {
             int length = 5;
+            String prefixToBeMatched = "M";
+
             List<String> input = WordsUtil.getWordsFromString(fileInputSource.input());
-            long wordsCount = wordCountService.findWordsGreaterThanCertainLength(input, length);
+            long wordsCount = wordCountService.countWordsWithMatchingPrefix(input, prefixToBeMatched);
             System.out.println("Number of words with length greater than "+length+" is : "+wordsCount);
 
-            String prefixToBeMatched = "M";
-            List<String> words = wordCountService.findWordsWithMatchingPrefix(input, prefixToBeMatched);
+            List<String> words = wordCountService.findWordsGreaterThanCertainLength(input, length);
             System.out.println("Words starting with prefix "+ prefixToBeMatched +" are: ");
             words.forEach(System.out::println);
 
